@@ -1,0 +1,75 @@
+#include <new> 
+#include <iostream>
+
+using namespace std;
+
+int * pekare;
+
+int main() {
+
+	cout << "2: 1 Kib" << endl << "3: 1 Kb" << endl;
+	int delare1;
+	int delare2;
+	int Kib = 1024;
+	int Gib = 1073741824;
+	int val;
+	cin >> val;
+
+	while (true)
+	{
+		switch (val)
+		{
+		case 1:
+			while (true)
+			{
+				try {
+					pekare = new int[268435456]; //skapar en aray med denna storleken.
+				}
+				catch (std::bad_alloc e) {
+					cerr << " Det blev fel " << e.what() << endl;
+				}
+			}
+
+			break;
+
+		case 2:
+			//Kib
+			while (true)
+			{
+				try {
+					delare1 = Kib / sizeof(int);
+					pekare = new int[delare1]; //skapar en aray med denna storleken.
+					//cout << "loading...." << endl;
+				}
+				catch (std::bad_alloc e) {
+					cerr << " Det blev fel " << e.what() << endl;
+				}
+			}
+
+			break;
+
+		case 3:
+			//Gib
+			while (true)
+			{
+				try {
+					delare2 = Gib / sizeof(int);
+					pekare = new int[delare2]; //skapar en aray med denna storleken, antalet ints.
+				}
+				catch (std::bad_alloc e) {
+					cerr << " Det blev fel " << e.what() << endl;
+				}
+			}
+			break;
+
+		case 4:
+
+
+
+			break;
+
+		}
+	}
+
+
+}
