@@ -1,0 +1,81 @@
+#include <new> 
+#include <iostream>
+
+using namespace std;
+
+int * pekare;
+
+int main() {
+
+	cout << "2: 1 Kib" << endl << "3: 1 Kb" << endl;
+	int delare1;
+	int delare2;
+	int Kib = 1024;
+	int Gib = 1073741824;
+	int val;
+	int raknare = 0;
+	int raknare2 = 0;
+	cin >> val;
+	
+	while (true)
+	{
+		switch (val)
+		{
+		case 1:
+			
+			while (true)
+			{
+				try {
+					pekare = new int[268435456]; //skapar en aray med denna storleken.
+				}
+				catch (std::bad_alloc e) {
+					cerr << " Det blev fel " << e.what() << endl;
+				}
+			}
+
+			break;
+
+		case 2:
+			//Kib
+			raknare = 0;
+			raknare2 = 0;
+			while (true)
+			{//modilus
+				try {
+					raknare++;
+					delare1 = Kib / sizeof(int);
+					pekare = new int[delare1]; //skapar en aray med denna storleken.
+					//cout << "loading...." << endl;
+					if (raknare % 1024 == 0)
+					{
+						raknare2++;
+					}
+				}
+				catch (std::bad_alloc e) {
+					cerr << " Det blev fel " << e.what() << endl;
+					cout << "tillagt " << raknare2 << " Kib" << endl;
+				}
+			}
+
+			break;
+
+		case 3:
+			//Gib
+			raknare = 0;
+			raknare2 = 0;
+			while (true)
+			{
+				try {
+					delare2 = Gib / sizeof(int);
+					pekare = new int[delare2]; //skapar en aray med denna storleken, antalet ints.
+					raknare++;
+				}
+				catch (std::bad_alloc e) {
+					cerr << " Det blev fel " << e.what() << endl;
+					cout << "tillagt " << raknare << " Gib" << endl;
+				}
+			}
+			break;
+		}
+	}
+}
